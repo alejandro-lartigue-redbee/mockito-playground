@@ -8,10 +8,6 @@ public class CustomerTest {
 
     /**
      *  The system should be able to store information on a new customer using valid data.
-     *  Scenario:
-     *  1. Given I create a new customer named Mickey Mouse
-     *  2. When I initialize the customer object with valid details.
-     *  3. Then Mickey's information should be stored in the system.
      */
     @Test
     public void creatingCustomerWithValidData_StoresSpecifiedData() {
