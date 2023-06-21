@@ -5,7 +5,7 @@ import bankService.exceptions.*;
  * Abstracts the general concepts of a bank account.
  * @author Tariq King
  */
-public abstract class Account {
+public class Account {
 
     protected long accountNumber;
     protected double balance;
@@ -34,6 +34,6 @@ public abstract class Account {
         }
     }
 
-    public abstract void withdraw(double amount) throws InsufficientFundsException;
+  //  public   void withdraw(double amount) throws InsufficientFundsException;
 
 }

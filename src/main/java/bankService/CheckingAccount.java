@@ -31,17 +31,17 @@ public class CheckingAccount extends Account {
         this.notificationService=null;
     }
 
-    @Override
-    public void withdraw(double amount) throws InsufficientFundsException {
-      if(amount <= this.balance+overdraftLimit) {
-          this.balance = this.balance - amount;
-          updateAccountStatus();
-          if (isOverDrawn) {
-              this.balance = this.balance - overdraftFee;
-          }
-      }
-      else throw new InsufficientFundsException();
-    }
+    // @Override
+    // public void withdraw(double amount) throws InsufficientFundsException {
+    //   if(amount <= this.balance+overdraftLimit) {
+    //       this.balance = this.balance - amount;
+    //       updateAccountStatus();
+    //       if (isOverDrawn) {
+    //           this.balance = this.balance - overdraftFee;
+    //       }
+    //   }
+    //   else throw new InsufficientFundsException();
+    // }
 
     private void updateAccountStatus()
     {
