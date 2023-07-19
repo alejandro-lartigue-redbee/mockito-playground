@@ -24,10 +24,10 @@ public class AccountTest {
        // Account account = new Account(customer, 100.0, 1234567);
         Account accountMock = Mockito.mock(Account.class);
         //when(accountMock.getBalance()).thenReturn(600.0);
-        doThrow(InvalidAmountException.class).when(accountMock).deposit(123);
+        doThrow(InvalidAmountException.class).when(accountMock).deposit(124);
         //doNothing().when(accountMock).balance;
         // Act
-        accountMock.deposit(124);
+        accountMock.deposit(123);
    
         // Then
         Assertions.assertNotNull(customer);
@@ -35,5 +35,7 @@ public class AccountTest {
         //Assertions.assertEquals(223.0, account.getBalance());
 
     }
+
+
 
 }
