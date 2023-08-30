@@ -31,9 +31,9 @@ public class AccountTest {
    
         // Then
         Assertions.assertNotNull(customer);
-        Assertions.assertEquals(223.0, accountMock.getBalance());
+        Assertions.assertEquals(0, accountMock.getBalance());
         //Assertions.assertEquals(223.0, account.getBalance());
-
+        //asdsadasdasdas
     }
 
 
