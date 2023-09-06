@@ -1,5 +1,7 @@
 package bankService;
 
+import java.util.Objects;
+
 /**
  * Facilitates storing, retrieving, and updating customer information.
  * @author Tariq King
@@ -39,5 +41,4 @@ public class Customer {
     public void updateEmail(String email) {
         this.email = email;
     }
-
 }
