@@ -25,7 +25,7 @@ public class AccountTest {
         Customer customer;
         Account account;
         // Act
-        customer =  Mockito.spy(new Customer("Mickey Mouse", "Disneyland", "Mickey@Disneyland.com"));
+        customer =  Mockito.spy(new Customer("Mickey Mouse", "Disneyland23", "Mickey@Disneyland.com"));
         account = Mockito.spy(new Account(customer, 200.0, 2974802746820L) {
             @Override
             public void withdraw(double amount) throws InsufficientFundsException {
@@ -39,7 +39,7 @@ public class AccountTest {
         Assertions.assertEquals(account.getOwner().getAddress(), "Disneyland","The Customer Address has not the value expected");
         Assertions.assertEquals(account.getOwner().getEmail(),"Mickey@Disneyland.com" ,"The Customer Name has not the value expected");
         Assertions.assertEquals(account.getOwner().getName(), "Mickey Mouse","The Customer Name has not the value expected");
-        //Assertions.assertTrue(account.getOwner().equals(customer), "The Customer has not the value expected");
+        //Assertions.assertEquals(account.getOwner(), customer, "The Customer has not the value expected");
     }
     
     
