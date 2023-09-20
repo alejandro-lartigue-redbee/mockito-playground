@@ -9,6 +9,8 @@ import static org.mockito.Mockito.when;
 import bankService.exceptions.InsufficientFundsException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mockito;
 import org.mockito.BDDMockito.Then;
 
@@ -25,7 +27,7 @@ public class AccountTest {
         Customer customer;
         Account account;
         // Act
-        customer =  Mockito.spy(new Customer("Mickey Mouse", "Disneyland23", "Mickey@Disneyland.com"));
+        customer =  Mockito.spy(new Customer("Mickey Mouse", "Disneyland", "Mickey@Disneyland.com"));
         account = Mockito.spy(new Account(customer, 200.0, 2974802746820L) {
             @Override
             public void withdraw(double amount) throws InsufficientFundsException {
@@ -47,22 +49,41 @@ public class AccountTest {
     public void depositAmount_IncreaseBalanceAmount() throws InvalidAmountException {
         // Arrange
         Customer customer;
-        customer = new Customer("Mickey Mouse", "Disneyland", "Mickey@Disneyland.com");
-       // Account account = new Account(customer, 100.0, 1234567);
-        Account accountMock = Mockito.mock(Account.class);
-        //when(accountMock.getBalance()).thenReturn(600.0);
-        doThrow(InvalidAmountException.class).when(accountMock).deposit(124);
-        //doNothing().when(accountMock).balance;
-        // Act
-        accountMock.deposit(123);
-   
-        // Then
-        Assertions.assertNotNull(customer);
-        Assertions.assertEquals(0, accountMock.getBalance());
-        //Assertions.assertEquals(223.0, account.getBalance());
-        //asdsadasdasdas
+        Account account;
+
+        customer =  Mockito.spy(new Customer("Mickey Mouse", "Disneyland", "Mickey@Disneyland.com"));
+        account = Mockito.spy(new Account(customer, 200.0, 2974802746820L) {
+            @Override
+            public void withdraw(double amount) throws InsufficientFundsException {
+
+            }
+        });
+
+        //Act
+        account.deposit(100.00);
+
+        //Assert
+        Assertions.assertEquals(300.00, account.getBalance(), "El balance no es el esperado");
     }
 
+    @ParameterizedTest
+    @ValueSource(doubles = {0.0, -100.0})
+    public void depositInvalidAmount_RaiseInvalidAmountException(double amount) throws InvalidAmountException {
+        // Arrange
+        Customer customer;
+        Account account;
+
+        customer =  Mockito.spy(new Customer("Mickey Mouse", "Disneyland", "Mickey@Disneyland.com"));
+        account = Mockito.spy(new Account(customer, 200.0, 2974802746820L) {
+            @Override
+            public void withdraw(double amount) throws InsufficientFundsException {
+
+            }
+        });
+
+        //Act y Assert
+        Assertions.assertThrows(InvalidAmountException.class, () -> account.deposit(amount));
+    }
 
 
 }
